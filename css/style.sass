@@ -1,0 +1,343 @@
+@import '../fonts/fonts.css'
+@import url(normalize.css)
+
+body
+	font-family: 'Roboto', sans-serif
+
+.container
+	display: flex
+	flex-direction: column
+	width: 80%
+	margin: 0 auto
+
+a:link, a:visited, a:active
+	color: #ffffff
+	text-decoration: none
+	transition: all 0.2s
+
+a:hover
+	color: red
+	transition: all 0.2s
+
+%flex-column
+	display: flex
+	flex-direction: column
+
+%flex-row
+	display: flex
+	flex-direction: row
+	flex-wrap: wrap
+
+%flex-center
+	display: flex
+	justify-content: center
+	align-items: center
+
+
+
+.menu-wrapper
+	position: relative
+	display: flex
+	align-items: center
+	padding: 20px 0
+	font-size: 26px
+	.header-logo
+		display: flex
+		flex-basis: 30%
+		text-align: center
+		justify-content: center
+	.menu-list
+		display: flex
+		justify-content: flex-start
+		flex-basis: 70%
+		margin: 0
+		padding: 0
+		.menu-item
+			margin-right: 30px
+			list-style: none
+
+.menu-wrapper.open .menu-list
+	position: absolute
+	right: 0
+	top: 0
+	display: flex
+	flex-direction: column
+	margin-top: 70px
+
+.menu-burger
+	display: none
+	@extend %flex-column
+	justify-content: center
+	position: relative
+	width: 30px
+	height: 30px
+	cursor: pointer
+	span
+		position: absolute
+		width: 30px
+		height: 5px
+		border-radius: 4px
+		background: #fff
+		transform: rotate(0deg)
+		transition: .25s ease-in-out
+	span:nth-child(1)
+		top: 0
+	span:nth-child(2)
+		top: 10px
+	span:nth-child(3)
+		top: 20px
+
+.menu-wrapper.open
+	span:nth-child(1)
+		top: 10px
+		transform: rotate(45deg)
+	span:nth-child(2)
+		display: none
+	span:nth-child(3)
+		top: 10px
+		transform: rotate(-45deg)
+
+.menu.scroll .menu-wrapper
+	position: fixed
+	left: 0
+	top: 0
+	width: 100%
+	padding: 20px
+	box-sizing: border-box
+	z-index: 100
+	background: #ffffff
+	box-shadow: 0 3px 2px 2px rgba(0,0,0,0.2)
+	a
+		color: #000000
+		&:hover
+			color: red
+
+.menu.scroll .menu-burger span
+	background-color: #000
+
+header
+	width: 100%
+	height: 90vh
+	background: url(../img/header.png) no-repeat center center
+	color: #ffffff
+	.container
+		height: inherit
+	.header-title
+		@extend %flex-column
+		justify-content: flex-end
+		flex: 1 0 0
+		margin-bottom: 150px
+		&__subtitle
+			margin-bottom: 0
+			font-size: 23px
+			letter-spacing: 0.92px
+			color: #b7b7b7
+		&__main-title
+			margin: 0
+			font-size: 63px
+			font-weight: 700
+			letter-spacing: 2.2px
+		&__text
+			width: 70%
+			line-height: 21px
+			letter-spacing: 0.84px
+
+img
+	width: 100%
+	object-fit: cover
+	transition: all 0.2s
+	&:hover
+		transform: scale(1.1)
+		transition: all 0.2s
+
+.gallery
+	.container
+		flex-direction: row
+		flex-wrap: nowrap
+		.gallery-left
+			display: flex
+			flex-basis: 70%
+			flex-direction: column
+			margin: 50px 0
+			.gallery-left__caption
+				display: flex
+				flex-direction: row
+				flex-wrap: nowrap
+				justify-content: flex-start
+				align-items: center
+				&-title
+					font-size: 30px
+					letter-spacing: 1.2px
+				&-text
+					width: 60%
+					margin-left: 10%
+					font-size: 13px
+					letter-spacing: 0.52px
+			.gallery-img
+				display: flex
+				flex-wrap: nowrap
+				.gallery-img-left
+					display: flex
+					flex-direction: column
+				.gallery-img-right
+					display: flex
+					flex-direction: column
+					flex-wrap: wrap
+					&-bottom
+						display: flex
+					.four-img
+						display: flex
+						flex-direction: column
+						flex: 1 1 0
+					.four-img + img
+						flex: 1 1 0
+		.gallery-right
+			flex-basis: 30%
+			img
+				margin-top: -88px
+				margin-left: 20px
+
+.info
+	width: 100%
+	height: 325px
+	text-align: center
+	color: #ffffff
+	overflow: hidden
+	&__title
+		margin-top: 100px
+		font-size: 23px
+		letter-spacing: 0.92px
+		span
+			padding: 7px
+			border: 1px solid #ffffff
+			cursor: pointer
+	&__text
+		width: 60%
+		margin: 30px auto 90px
+		font-size: 13px
+		line-height: 26px
+		letter-spacing: 0.52px
+
+.parallax
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%), url(../img/parallax.jpg) no-repeat center top
+	background-size: cover
+
+.statistics
+	.statistics-caption
+		text-align: center
+		font-size: 30px
+		font-weight: 300
+		line-height: 57px
+		letter-spacing: 1.2px
+
+.about
+	&__caption
+		margin-bottom: 12px
+		font-size: 30px
+		font-weight: 300
+		letter-spacing: 1.2px
+	&__text
+		margin-bottom: 20px
+		font-size: 14px
+		font-weight: 300
+		line-height: 25px
+		letter-spacing: 0.56px
+
+.counter
+	display: flex
+	justify-content: space-around
+	padding: 15px 0
+	margin-bottom: 50px
+	text-align: center
+	background: #f5f5f5
+	&-content
+		display: flex
+		flex-direction: column
+		&__number
+			font-size: 28px
+			font-weight: 500
+			letter-spacing: 1.12px
+		&__caption
+			font-size: 17px
+			font-weight: 400
+			letter-spacing: 0.68px
+
+.footer
+	background: url(../img/footer.png) no-repeat center center
+	color: #ffffff
+	text-align: center
+	&__title
+		margin-top: 100px
+		font-size: 23px
+		letter-spacing: 0.92px
+		text-align: center
+		span
+			padding: 7px
+			border: 1px solid #ffffff
+			cursor: pointer
+	&__text
+		width: 60%
+		margin: 30px auto 90px
+		font-size: 13px
+		line-height: 26px
+		letter-spacing: 0.52px
+	iframe
+		margin: 0 auto 
+	.header-logo
+		margin: 50px 0
+
+@media screen and (max-width: 1024px)
+	.gallery .container .gallery-right
+		display: none
+	.gallery .container
+		justify-content: center
+	.gallery .container .gallery-left
+		flex-basis: auto
+		align-items: center
+	.gallery .container .gallery-left .gallery-left__caption
+		justify-content: center
+
+@media screen and (max-width: 768px)
+	header .header-title
+		margin-bottom: 90px
+	.menu
+		.menu-list
+			display: none
+	.menu-wrapper.open .menu-list
+		position: absolute
+		right: 0
+		top: 0
+		display: flex
+		flex-direction: column
+		align-items: center
+		width: 100%
+		margin-top: 70px
+		background-color: #fff
+		.menu-item
+			margin: 10px 0
+		a
+			color: #000
+	.menu-burger
+		display: flex
+		margin-left: auto
+		margin-right: 0
+	.parallax
+		background-position: 100% 100%
+	.info__title
+		margin-top: 30px
+	.about__caption
+		font-size: 20px
+	.about__text
+		line-height: 20px
+	.counter-content
+		&__number
+			font-size: 22px
+		&__caption
+			font-size: 14px
+	iframe
+		width: 320px
+		height: 180px
+
+@media screen and (max-width: 325px)
+	iframe
+		display: none
